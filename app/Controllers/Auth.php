@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Controllers\BaseController;
 
-class UserController extends BaseController
+class Auth extends BaseController
 {
     public function login()
     {
@@ -69,5 +69,4 @@ class UserController extends BaseController
         session()->destroy();
         return redirect()->to('login');
     }
-    
 }
