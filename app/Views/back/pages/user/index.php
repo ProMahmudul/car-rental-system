@@ -1,15 +1,15 @@
 <?= $this->extend("back/layouts/app") ?>
 
 <?= $this->section("pageTitle") ?>
-Create User
+Users
 <?= $this->endSection() ?>
 
 <?= $this->section("pageHeaderTitle") ?>
-User
+Users
 <?= $this->endSection() ?>
 
 <?= $this->section("pageBreadcrumb") ?>
-Create User
+Manage User
 <?= $this->endSection() ?>
 
 <?= $this->section("content") ?>
