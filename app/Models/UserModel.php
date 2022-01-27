@@ -16,11 +16,11 @@ class UserModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "name",
-		"email",
-		"phone_no",
+        "email",
+        "phone_no",
         "profile_image",
-		"password",
-		"role"
+        "password",
+        "role"
     ];
 
     // Dates
@@ -46,4 +46,5 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
 }

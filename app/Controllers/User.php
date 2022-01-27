@@ -14,7 +14,12 @@ class User extends ResourceController
      */
     public function index()
     {
-        
+        $user = new UserModel();
+        $data = [
+            'users' => $user->paginate(20),
+            'pager' => $user->pager
+        ];
+        return view('back/pages/user/index', $data);
     }
 
     /**
