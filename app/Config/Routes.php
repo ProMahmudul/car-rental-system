@@ -44,7 +44,7 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
 $routes->group("customer", ["filter" => "auth"], function ($routes) {
     $routes->get("/", "Customer::index");
 });
-$routes->get('logout', 'User::logout');
+$routes->get('logout', 'Auth::logout');
 
 /*
  * --------------------------------------------------------------------

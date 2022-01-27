@@ -12,7 +12,6 @@ class Auth extends BaseController
         $data = [];
 
         if ($this->request->getMethod() == 'post') {
-
             $rules = [
                 'email' => 'required|min_length[6]|max_length[50]|valid_email',
                 'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
