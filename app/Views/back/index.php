@@ -1,4 +1,4 @@
-<?=$this->extend("back/layouts/master")?>
+<?=$this->extend("back/layouts/app")?>
 
 <?=$this->section("pageTitle")?>
   Dashboard
