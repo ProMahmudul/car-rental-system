@@ -128,6 +128,8 @@ class User extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $model = new UserModel();
+        $data['user'] = $model->where('id', $id)->delete();
+        return redirect()->to(base_url('admin/user'));
     }
 }

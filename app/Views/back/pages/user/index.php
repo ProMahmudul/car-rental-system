@@ -35,7 +35,7 @@ Create User
                                    <?php foreach ($users as $key => $user) : ?>
                                         <tr>
                                              <td><?= ++$key ?></td>
-                                             <td><img width="50" src="<?=base_url().$user['profile_image']?>" alt=""></td>
+                                             <td><img width="50" src="<?= base_url() . $user['profile_image'] ?>" alt=""></td>
                                              <td><?= $user['name'] ?></td>
                                              <td><?= $user['email'] ?></td>
                                              <td><?= $user['phone_no'] ?></td>
@@ -49,7 +49,7 @@ Create User
                                                        <i class="fas fa-pencil-alt">
                                                        </i>
                                                   </a>
-                                                  <a class="btn btn-danger btn-sm" href="#">
+                                                  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?');" href="<?php echo base_url("user/delete/" . $user['id']); ?>">
                                                        <i class="fas fa-trash">
                                                        </i>
                                                   </a>
