@@ -40,7 +40,7 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
     $routes->resource("user");
 });
 
-// Editor routes
+// Customer routes
 $routes->group("customer", ["filter" => "auth"], function ($routes) {
     $routes->get("/", "Customer::index");
 });
