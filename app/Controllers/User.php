@@ -64,7 +64,6 @@ class User extends ResourceController
 
 
         if (!$this->validate($rules)) {
-
             return view("back/pages/user/create", [
                 "validation" => $this->validator,
             ]);
@@ -85,7 +84,7 @@ class User extends ResourceController
                     "phone_no" => $this->request->getVar("phone_no"),
                     "role" => $this->request->getVar("role"),
                     "profile_image" => "/images/" . $profile_image,
-                    "password" => md5($this->request->getVar("role"))
+                    "password" => md5($this->request->getVar("password"))
                 ];
 
                 if ($userModel->insert($data)) {

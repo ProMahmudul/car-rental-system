@@ -31,7 +31,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Front::index');
+$routes->get('our-cars', 'Front::ourCars');
 
 $routes->match(['get', 'post'], 'login', 'Auth::login', ["filter" => "noauth"]);
 // Admin routes
@@ -42,7 +43,7 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
 
 // Customer routes
 $routes->group("customer", ["filter" => "auth"], function ($routes) {
-    $routes->get("/", "Customer::index");
+    $routes->get("/customer", "Customer::index");
 });
 $routes->get('logout', 'Auth::logout');
 
