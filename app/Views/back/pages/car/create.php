@@ -71,7 +71,7 @@ Create Car
                                    </div>
                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                             <label for="image">Profile Image</label>
+                                             <label for="image">Image</label>
                                              <div class="input-group">
                                                   <div class="custom-file">
                                                        <input type="file" name="image" class="form-control" id="image" required>

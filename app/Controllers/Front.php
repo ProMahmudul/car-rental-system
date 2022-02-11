@@ -40,13 +40,26 @@ class Front extends BaseController
         $db      = \Config\Database::connect();
         $builder = $db->table('bookings');
         $builder->select('*');
+        $builder->where('status', 'pending');
         $builder->where('user_id', session()->get('id'));
         $builder->join('cars', 'cars.id = bookings.car_id', "left");
+
+        $pendingBookings = $builder->get()->getResult();
+
+        $builder = $db->table('bookings');
+        $builder->select('*');
+        $builder->where('status', 'accept');
+        $builder->where('user_id', session()->get('id'));
+        $builder->join('cars', 'cars.id = bookings.car_id', "left");
+
+        $acceptBookings = $builder->get()->getResult();
+        
         
         $data = [
-            'pendingBookings' => $builder->where('status', 'pending')->get()->getResult(),
-            'acceptBookings' => $builder->where('status', 'accept')->get()->getResult()
+            'pendingBookings' => $pendingBookings,
+            'acceptBookings' => $acceptBookings
         ];
+
         return view('front/my-account', $data);
     }
 }
