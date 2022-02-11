@@ -36,18 +36,26 @@
                                    <li><button type="button" class="search_btn" data-toggle="collapse" data-target="#collapse_search_body" aria-expanded="false" aria-controls="collapse_search_body"><i class="fal fa-search"></i></button>
                                    </li>
                                    <li class="dropdown"><button type="button" class="user_btn" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fal fa-user"></i></button>
+                                   <?php if(session()->get('isLoggedIn')): ?>
                                         <div class="user_dropdown rotors_dropdown dropdown-menu clearfix" aria-labelledby="user_dropdown">
-                                             <div class="profile_info clearfix"><a href="#!" class="user_thumbnail"><img src="<?= base_url('front') ?>/images/meta/img_01.png" alt="thumbnail_not_found"></a>
+                                             <div class="profile_info clearfix"><a href="#!" class="user_thumbnail"><img src="<?= base_url() ?><?= session()->get('profile_image') ?>" alt="thumbnail_not_found"></a>
                                                   <div class="user_content">
-                                                       <h4 class="user_name"><a href="#!">Rakibul Hassan</a></h4><span class="user_title">Seller</span>
+                                                       <h4 class="user_name"><a href="#!"><?= session()->get('name') ?></a></h4><span class="user_title"></span>
                                                   </div>
                                              </div>
                                              <ul class="ul_li_block clearfix">
-                                                  <li><a href="#!"><i class="fal fa-user-circle"></i> Profile</a></li>
-                                                  <li><a href="#!"><i class="fal fa-user-cog"></i> Settings</a></li>
-                                                  <li><a href="#!"><i class="fal fa-sign-out"></i> Logout</a></li>
+                                                  <li><a href="<?= base_url('my-account') ?>"><i class="fal fa-user-circle"></i>Profile</a></li>
+                                                  <li><a href="<?= site_url('logout') ?>"><i class="fal fa-sign-out"></i> Logout</a></li>
                                              </ul>
                                         </div>
+                                   <?php else: ?>
+                                        <div class="user_dropdown rotors_dropdown dropdown-menu clearfix" aria-labelledby="user_dropdown">
+                                             <ul class="ul_li_block clearfix">
+                                                  <li><a href="<?= base_url('login') ?>"><i class="fal fa-lock"></i>Login</a></li>
+                                                  <li><a href="<?= base_url('register') ?>"><i class="fal fa-user-circle"></i>Register</a></li>
+                                             </ul>
+                                        </div>
+                                   <?php endif; ?>
                                    </li>
                                    <li><button type="button" class="mobile_sidebar_btn"><i class="fal fa-align-right"></i></button></li>
                               </ul>
@@ -55,44 +63,8 @@
                          <div class="col-lg-6 col-md-12">
                               <nav class="main_menu clearfix">
                                    <ul class="ul_li_center clearfix">
-                                        <li class="active has_child"><a href="#!">Home</a>
-                                             <ul class="submenu">
-                                                  <li><a href="index_1.html">Home Page V.1</a></li>
-                                                  <li><a href="index_2.html">Home Page V.2</a></li>
-                                             </ul>
-                                        </li>
-                                        <li><a href="gallery.html">Our Cars</a></li>
-                                        <li><a href="review.html">Reviews</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li class="has_child"><a href="#!">Pages</a>
-                                             <ul class="submenu">
-                                                  <li><a href="service.html">Our Service</a></li>
-                                                  <li><a href="gallery.html">Car Gallery</a></li>
-                                                  <li><a href="account.html">My Account</a></li>
-                                                  <li><a href="reservation.html">Reservation</a></li>
-                                                  <li class="has_child"><a href="#!">Blogs</a>
-                                                       <ul class="submenu">
-                                                            <li><a href="blog.html">Blog</a></li>
-                                                            <li><a href="blog_details.html">Blog Details</a></li>
-                                                       </ul>
-                                                  </li>
-                                                  <li class="has_child"><a href="#!">Our Cars</a>
-                                                       <ul class="submenu">
-                                                            <li><a href="car.html">Cars</a></li>
-                                                            <li><a href="car_details.html">Car Details</a></li>
-                                                       </ul>
-                                                  </li>
-                                                  <li><a href="cart.html">Shopping Cart</a></li>
-                                                  <li><a href="faq.html">F.A.Q.</a></li>
-                                                  <li><a href="login.html">Login</a></li>
-                                             </ul>
-                                        </li>
-                                        <li class="has_child"><a href="#!">Contact Us</a>
-                                             <ul class="submenu">
-                                                  <li><a href="contact.html">Contact Default</a></li>
-                                                  <li><a href="contact_wordwide.html">Contact Wordwide</a></li>
-                                             </ul>
-                                        </li>
+                                        <li class="active"><a href="<?= base_url() ?>">Home</a></li>
+                                        <li><a href="<?=base_url()?>/our-cars">Our Cars</a></li>
                                    </ul>
                               </nav>
                          </div>

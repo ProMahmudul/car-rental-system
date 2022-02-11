@@ -31,20 +31,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// Frontend
 $routes->get('/', 'Front::index');
 $routes->get('our-cars', 'Front::ourCars');
+$routes->get('car-details/(:num)', 'Front::singleCar/$1');
+$routes->post('reservation', 'Booking::create');
 
 $routes->match(['get', 'post'], 'login', 'Auth::login', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'register', 'Auth::register', ["filter" => "noauth"]);
+
+
 // Admin routes
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
     $routes->get("/", "Admin::index");
     $routes->resource("user");
+    $routes->resource("car");
+    $routes->get('reservations', 'Booking::index');
+    $routes->get('reservations', 'Booking::index');
+    $routes->get('reservations/status/(:num)', 'Booking::status/$1');
+    $routes->post('reservations/status', 'Booking::update');
 });
 
 // Customer routes
-$routes->group("customer", ["filter" => "auth"], function ($routes) {
-    $routes->get("/customer", "Customer::index");
-});
+$routes->get("my-account", "Front::myAccount", ["filter" => "auth"]);
+
 $routes->get('logout', 'Auth::logout');
 
 /*

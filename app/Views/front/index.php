@@ -24,7 +24,7 @@ Home
                     <?= $description ?>
                   </p>
                   <div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-                    <a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now <img src="<?= base_url('front') ?>/images/icons/icon_01.png" alt="icon_not_found"></a>
+                    <a class="custom_btn bg_default_red btn_width text-uppercase" href="<?= base_url('car-details/'.$slider['id']) ?>">Book Now <img src="<?= base_url('front') ?>/images/icons/icon_01.png" alt="icon_not_found"></a>
                   </div>
                 </div>
               </div>
@@ -52,9 +52,9 @@ Home
         <?php foreach ($cars as $car) : ?>
           <div class="element-item sedan" data-category="sedan">
             <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
-              <h3 class="item_title mb-0"><a href="#!"><?= $car['title'] ?></a>
+              <h3 class="item_title mb-0"><a href="<?= base_url('car-details/'.$car['id']) ?>"><?= $car['title'] ?></a>
               </h3>
-              <div class="item_image position-relative"><a class="image_wrap" href="#!"><img src="<?= base_url() ?><?= $car['image'] ?>" alt="<?= $car['title'] ?>">
+              <div class="item_image position-relative"><a class="image_wrap" href="<?= base_url('car-details/'.$car['id']) ?>"><img src="<?= base_url() ?><?= $car['image'] ?>" alt="<?= $car['title'] ?>">
                 </a><span class="item_price bg_default_blue">Tk.<?= $car['price_per_day'] ?>/Day</span></div>
             </div>
           </div>
@@ -126,7 +126,7 @@ Home
               <div class="feature_fullimage"><img src="<?= base_url() ?><?=$slider['image']?>" alt="<?=$slider['title']?>">
                 <div class="item_content text-white"><span class="item_price bg_default_blue">Tk.<?=$slider['price_per_day']?>/Day</span>
                   <h3 class="item_title text-white"><?=$slider['title']?></h3>
-                  <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img src="<?= base_url('front') ?>/images/icons/icon_02.png" alt="icon_not_found"></a>
+                  <a class="text_btn text-uppercase" href="<?= base_url('car-details/'.$slider['id']) ?>"><span>Kook A Car</span> <img src="<?= base_url('front') ?>/images/icons/icon_02.png" alt="icon_not_found"></a>
                 </div>
               </div>
             </div>

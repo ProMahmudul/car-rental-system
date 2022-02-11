@@ -84,7 +84,7 @@ class User extends ResourceController
                     "phone_no" => $this->request->getVar("phone_no"),
                     "role" => $this->request->getVar("role"),
                     "profile_image" => "/images/" . $profile_image,
-                    "password" => md5($this->request->getVar("password"))
+                    "password" => password_hash($this->request->getVar("password"), PASSWORD_DEFAULT)
                 ];
 
                 if ($userModel->insert($data)) {

@@ -40,7 +40,7 @@ class Auth extends BaseController
                 if ($user['role'] == "admin") {
                     return redirect()->to(base_url('admin'));
                 } elseif ($user['role'] == "customer") {
-                    return redirect()->to(base_url('customer'));
+                    return redirect()->to(base_url('my-account'));
                 }
             }
         }
@@ -61,6 +61,57 @@ class Auth extends BaseController
 
         session()->set($data);
         return true;
+    }
+
+    public function register()
+    {
+        if ($this->request->getMethod() == 'post') {
+            $rules = [
+                "name" => "required|min_length[3]|max_length[40]",
+                "email" => "required|valid_email|is_unique[users.email]",
+                'phone_no' => 'required|regex_match[/^[0-9]{11}$/]',
+                "profile_image" => [
+                    "rules" => "uploaded[profile_image]|max_size[profile_image,1024]|is_image[profile_image]|mime_in[profile_image,image/jpg,image/jpeg,image/gif,image/png]",
+                    "label" => "Profile Image",
+                ],
+                'password' => 'required|min_length[8]',
+                'password_confirm' => 'required|matches[password]',
+            ];
+
+
+            if (!$this->validate($rules)) {
+                return view("auth/register", [
+                    "validation" => $this->validator,
+                ]);
+            } else {
+
+                $file = $this->request->getFile("profile_image");
+
+                $session = session();
+                $profile_image = $file->getName();
+
+                if ($file->move("images", $profile_image)) {
+
+                    $userModel = new UserModel();
+
+                    $data = [
+                        "name" => $this->request->getVar("name"),
+                        "email" => $this->request->getVar("email"),
+                        "phone_no" => $this->request->getVar("phone_no"),
+                        "role" => $this->request->getVar("role") ?? 'customer',
+                        "profile_image" => "/images/" . $profile_image,
+                        "password" => password_hash($this->request->getVar("password"), PASSWORD_DEFAULT)
+                    ];
+
+                    if ($userModel->insert($data)) {
+                        $session->setFlashdata("success", "Registration successul!!");
+                    } else {
+                        $session->setFlashdata("error", "Failed to register");
+                    }
+                }
+            }
+        }
+        return view('auth/register');
     }
 
     public function logout()

@@ -1,15 +1,15 @@
 <?= $this->extend("back/layouts/app") ?>
 
 <?= $this->section("pageTitle") ?>
-Create User
+Create Car
 <?= $this->endSection() ?>
 
 <?= $this->section("pageHeaderTitle") ?>
-User
+Car
 <?= $this->endSection() ?>
 
 <?= $this->section("pageBreadcrumb") ?>
-Create User
+Create Car
 <?= $this->endSection() ?>
 
 <?= $this->section("content") ?>
@@ -20,7 +20,7 @@ Create User
                <div class="col-12 card card-primary">
 
                     <!-- form start -->
-                    <form action="<?= site_url('admin/user') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('admin/car') ?>" method="post" enctype="multipart/form-data">
                          <div class="card-body">
                               <?php if (session()->get("success") || session()->get("error")) : ?>
                                    <div class="col-12">
@@ -51,56 +51,42 @@ Create User
                               <div class="row">
                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                             <label for="name">Name</label>
-                                             <input type="text" name="name" class="form-control" id="name" value="<?= old('name') ?>" placeholder="Enter name">
+                                             <label for="title">Title</label>
+                                             <input type="text" name="title" class="form-control" id="title" value="<?= old('title') ?>" placeholder="Enter title" required>
                                         </div>
                                    </div>
                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                             <label for="email">Email address</label>
-                                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                             <label for="brand">Brand</label>
+                                             <input type="text" name="brand" class="form-control" id="brand" placeholder="Enter brand" required>
                                         </div>
                                    </div>
                               </div>
                               <div class="row">
                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                             <label for="phone_no">Phone</label>
-                                             <input type="text" name="phone_no" class="form-control" id="phone_no" placeholder="Enter phone no">
+                                             <label for="price_per_day">Price Per Day</label>
+                                             <input type="text" name="price_per_day" class="form-control" id="price_per_day" placeholder="Enter price" required>
                                         </div>
                                    </div>
                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                             <label>Role</label>
-                                             <select class="form-control" name="role">
-                                                  <option value="">Select</option>
-                                                  <option value="admin">Admin</option>
-                                                  <option value="customer">Customer</option>
-                                             </select>
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-sm-6">
-                                        <div class="form-group">
-                                             <label for="password">Password</label>
-                                             <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6">
-                                        <div class="form-group">
-                                             <label for="password_confirm">Confirm Password</label>
-                                             <input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Password Confirmation">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="form-group">
-                                   <label for="profile_image">Profile Image</label>
-                                   <div class="input-group">
-                                        <div class="custom-file">
-                                             <input type="file" name="profile_image" class="form-control" id="profile_image">
-                                        </div>
+                                             <label for="image">Profile Image</label>
+                                             <div class="input-group">
+                                                  <div class="custom-file">
+                                                       <input type="file" name="image" class="form-control" id="image" required>
+                                                  </div>
 
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="row">
+                                   <div class="col">
+                                        <div class="form-group">
+                                             <label for="description">Description</label>
+                                             <textarea name="description" class="form-control" id="description" cols="30" rows="3" placeholder="Enter description" required></textarea>
+                                        </div>
                                    </div>
                               </div>
                               <div class="form-group mt-4">
